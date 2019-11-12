@@ -1,0 +1,23 @@
+{
+  "name": "movie-project",
+  "version": "1.0.0",
+  "description": "This is an example project",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier \"src/**/*.{js,html}\" --write",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oscarpolanco/movie-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oscarpolanco/movie-project/issues"
+  },
+  "homepage": "https://github.com/oscarpolanco/movie-project#readme",
+  "devDependencies": {
+    "prettier": "^1.19.1"
+  }
+}

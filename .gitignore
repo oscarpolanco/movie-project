@@ -1,2 +1,5 @@
 # visual studio code
 *.code-workspace
+
+# project
+node_modules
