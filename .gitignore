@@ -3,3 +3,10 @@
 
 # project
 node_modules
+
+# parcel
+.cache
+dist
+
+# log
+npm-debug.log
