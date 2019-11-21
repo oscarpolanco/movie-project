@@ -1,4 +1,13 @@
 import React, { useState, useEffect } from "react";
+import {
+  movieContainer,
+  itemCard,
+  resultContainer,
+  movieImage,
+  movieInfo,
+  movieTitle,
+  movieOverview
+} from "./style";
 
 /**
  * Render a set of movie's information
@@ -23,7 +32,7 @@ function MoviePage() {
   useEffect(() => {
     window.addEventListener("scroll", onScrollDepth);
 
-    return function() {
+    return () => {
       window.removeEventListener("scroll", onScrollDepth);
     };
   });
@@ -41,20 +50,27 @@ function MoviePage() {
   }, [page]);
 
   return (
-    <div className="movie-container">
-      {movies.map(movie => (
-        <div key={`movie-${movie.id}`}>
-          <div>{movie.title}</div>
-          <div>{movie.overview}</div>
-          <div>
-            <img
-              alt=""
-              src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
-            />
+    <div css={movieContainer}>
+      <h1>Movie List</h1>
+      <div css={resultContainer}>
+        {movies.map(movie => (
+          <div css={itemCard} key={`movie-${movie.id}`}>
+            <div css={movieImage}>
+              <img
+                alt=""
+                src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
+              />
+            </div>
+            <div css={movieInfo}>
+              <div css={movieTitle}>
+                <h3>{movie.title}</h3>
+                <span>{movie.release_date}</span>
+              </div>
+              <p css={movieOverview}>{movie.overview}</p>
+            </div>
           </div>
-          <div>{movie.release_date}</div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
