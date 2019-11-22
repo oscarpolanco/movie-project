@@ -1,6 +1,9 @@
 # visual studio code
 *.code-workspace
 
+# webStorm
+.idea/
+
 # project
 node_modules
 

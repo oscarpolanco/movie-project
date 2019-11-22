@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {
-  movieContainer,
-  itemCard,
-  resultContainer,
-  movieImage,
-  movieInfo,
-  movieTitle,
-  movieOverview
-} from "./style";
+import MovieItem from "./MovieItem/";
+import { movieContainer, resultContainer } from "./style";
+import getMovies from "../api/theMovieDB";
 
 /**
  * Render a set of movie's information
@@ -25,7 +19,7 @@ function MoviePage() {
     const isBottom =
       window.innerHeight + window.pageYOffset >= document.body.offsetHeight;
     if (isBottom) {
-      setPage(page + 1);
+      setPage(page => page + 1);
     }
   }
 
@@ -35,18 +29,15 @@ function MoviePage() {
     return () => {
       window.removeEventListener("scroll", onScrollDepth);
     };
-  });
+  }, []);
 
   useEffect(() => {
-    async function getMovies() {
-      const respnse = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.MOVIE_API_KEY}&page=${page}`
-      );
-      const result = await respnse.json();
-      setMovies(movies.concat(result.results));
+    async function setMoviesData() {
+      const result = await getMovies(page);
+      setMovies(movies => movies.concat(result.results));
     }
 
-    getMovies();
+    setMoviesData();
   }, [page]);
 
   return (
@@ -54,21 +45,7 @@ function MoviePage() {
       <h1>Movie List</h1>
       <div css={resultContainer}>
         {movies.map(movie => (
-          <div css={itemCard} key={`movie-${movie.id}`}>
-            <div css={movieImage}>
-              <img
-                alt=""
-                src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
-              />
-            </div>
-            <div css={movieInfo}>
-              <div css={movieTitle}>
-                <h3>{movie.title}</h3>
-                <span>{movie.release_date}</span>
-              </div>
-              <p css={movieOverview}>{movie.overview}</p>
-            </div>
-          </div>
+          <MovieItem key={`movie-${movie.id}`} movie={movie} />
         ))}
       </div>
     </div>
