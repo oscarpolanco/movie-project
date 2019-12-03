@@ -1,6 +1,12 @@
 import React from "react";
 import { IMG_PLACEHOLDER, MOVIE_IMG_BASE_SOURCE } from "./constant";
-import { itemCard, movieImage, movieInfo, movieOverview, movieTitle } from "./style";
+import {
+  movieCard,
+  movieImageContainer,
+  movieInfo,
+  movieInfoTitle,
+  movieInfoOverview
+} from "./style";
 
 /**
  * Render the data of a movie
@@ -15,16 +21,16 @@ function MovieItem({ release_date = '', poster_path =' ', title= '', overview= '
     : IMG_PLACEHOLDER;
 
   return (
-    <div css={itemCard}>
-      <div css={movieImage}>
+    <div css={movieCard}>
+      <div css={movieImageContainer}>
         <img alt="" src={imgSCR} />
       </div>
       <div css={movieInfo}>
-        <div css={movieTitle}>
+        <div css={movieInfoTitle}>
           <h3>{title}</h3>
           <span>{release_date}</span>
         </div>
-        <p css={movieOverview}>{overview}</p>
+        <p css={movieInfoOverview}>{overview}</p>
       </div>
     </div>
   );

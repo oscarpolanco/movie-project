@@ -1,6 +1,6 @@
 import { css } from "@emotion/core";
 
-const itemCard = css`
+const movieCard = css`
   align-items: center;
   background-color: #fff;
   box-sizing: border-box;
@@ -10,7 +10,7 @@ const itemCard = css`
   width: 483px;
 `;
 
-const movieImage = css`
+const movieImageContainer = css`
   height: 278px;
   width: 185px;
 `;
@@ -24,7 +24,7 @@ const movieInfo = css`
   width: 298px;
 `;
 
-const movieTitle = css`
+const movieInfoTitle = css`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -44,7 +44,7 @@ const movieTitle = css`
   }
 `;
 
-const movieOverview = css`
+const movieInfoOverview = css`
   color: #4d4d4d;
   font-size: 0.9em;
   line-height: 1.2em;
@@ -53,4 +53,10 @@ const movieOverview = css`
   white-space: normal;
 `;
 
-export { itemCard, movieImage, movieInfo, movieTitle, movieOverview };
+export {
+  movieCard,
+  movieImageContainer,
+  movieInfo,
+  movieInfoTitle,
+  movieInfoOverview
+};

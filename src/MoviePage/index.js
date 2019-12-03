@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MovieItem from "./MovieItem/";
-import { movieContainer, resultContainer } from "./style";
+import { movieContainer, movieResults } from "./style";
 import getMovies from "../api/theMovieDB";
 
 /**
@@ -43,7 +43,7 @@ function MoviePage() {
   return (
     <div css={movieContainer}>
       <h1>Movie List</h1>
-      <div css={resultContainer}>
+      <div css={movieResults}>
         {movies.map(movie => (
           <MovieItem key={`movie-${movie.id}`} movie={movie} />
         ))}
