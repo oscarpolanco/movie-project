@@ -6,10 +6,10 @@ const movieContainer = css`
   width: 1000px;
 `;
 
-const resultContainer = css`
+const movieResults = css`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 `;
 
-export { movieContainer, resultContainer };
+export { movieContainer, movieResults };
