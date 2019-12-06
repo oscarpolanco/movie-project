@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import MovieItem from "./MovieItem/";
 import { movieContainer, movieResults } from "./style";
 import getMovies from "../api/theMovieDB";
+import ErrorBoundry from "../ErrorBoundry";
 
 /**
  * Render a set of movie's information
@@ -33,8 +34,12 @@ function MoviePage() {
 
   useEffect(() => {
     async function setMoviesData() {
-      const result = await getMovies(page);
-      setMovies(movies => movies.concat(result.results));
+      try {
+        const result = await getMovies(page);
+        setMovies(movies => movies.concat(result.results));
+      } catch (error) {
+        throw new Error(error);
+      }
     }
 
     setMoviesData();
@@ -52,4 +57,10 @@ function MoviePage() {
   );
 }
 
-export default MoviePage;
+export default function MoviePageWrapper() {
+  return (
+    <ErrorBoundry>
+      <MoviePage />
+    </ErrorBoundry>
+  );
+}

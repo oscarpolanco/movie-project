@@ -8,7 +8,6 @@ const MOVIE_API_BASE_URL = `https://api.themoviedb.org/3/discover/movie?api_key=
  */
 async function getMovies(page) {
   const response = await fetch(`${MOVIE_API_BASE_URL}&page=${page}`);
-
   return response.json();
 }
 
